@@ -1,5 +1,7 @@
-from src.autograd import Tensor
+"""Simple example for autograd library."""
+
 import numpy as np
+from src.autograd import Tensor
 
 a = Tensor(np.array([
     [-1, -2, 3],
@@ -10,7 +12,7 @@ b = Tensor(np.array([
     [9],
     [11]]))
 
-w = a.T@b
+w = a.trans@(b*5)
 x = w.relu
 y = x.sum
 
