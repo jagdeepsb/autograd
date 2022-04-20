@@ -164,7 +164,8 @@ class Tensor():
 
         # set grad func
         def grad_func_a(parent_grad: Optional[np.ndarray]) -> np.ndarray:
-            partial_gradient = np.array([other]) if isinstance(other, (int, float)) else other.data
+            partial_gradient = np.array([other]) if \
+                isinstance(other, (int, float)) else other.data
             if parent_grad is None:
                 return partial_gradient
             return partial_gradient * parent_grad
@@ -225,7 +226,7 @@ class Tensor():
         return answer
 
     @property
-    def trans(self,) -> Tensor:
+    def T(self,) -> Tensor:
         """Define transpose operator for tensors and update computation
         graph."""
 

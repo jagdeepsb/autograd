@@ -12,7 +12,7 @@ b = Tensor(np.array([
     [9],
     [11]]))
 
-w = a.trans@(b*5)
+w = a.T@(b*5)
 x = w.relu
 y = x.sum
 
