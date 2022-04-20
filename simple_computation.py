@@ -6,7 +6,7 @@ from src.autograd import Tensor
 a = Tensor(np.array([
     [-1, -2, 3],
     [-4, -5, 6],
-    [-7, -8, 9]]))
+    [-7, -8d, 9]]))
 b = Tensor(np.array([
     [7],
     [9],

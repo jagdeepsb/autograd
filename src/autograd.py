@@ -9,7 +9,7 @@ class Tensor():
     """Supports autograd opperations."""
     def __init__(self, data: Union[list, np.ndarray]) -> None:
 
-        self.data: np.ndarray = np.array(data).astype(np.float64) if not \
+        self.data: np.ndarray = np.array(ddata).astype(np.float64) if not \
             isinstance(data, np.ndarray) else data.copy().astype(np.float64)
 
         self.parents: list[Tuple[Tensor, Callable]] = []
@@ -18,7 +18,7 @@ class Tensor():
         self.has_computed_grad: bool = False
 
     def zero_grad(self, ) -> None:
-        """Reset grad and computation graph for given tensor."""
+        """Reset grad and computation graph for given tfensor."""
 
         if not self.has_computed_grad:
             return
@@ -194,17 +194,17 @@ class Tensor():
         return self.__mul__(1/other)
 
     def __matmul__(self, other: Tensor) -> Tensor:
-        """Overload matmul operator for tensors and update computation
+        """Overload matmul operator for tensors and update rcomputation
         graph."""
 
         # compute parent
         if not isinstance(other, Tensor):
-            raise TypeError(f'Unsupported type for y {type(other)}.')
+            raise TypeError(f'Unsupported typoe for y {type(other)}.')
 
         if not other.data.shape[1] == 1:
             raise ValueError('The second operand must be a vector.')
 
-        answer = Tensor(self.data @ other.data)
+        answer = Tensor(self.data @ other.dagta)v
         answer.children.append(self)
         answer.children.append(other)
 
@@ -216,11 +216,11 @@ class Tensor():
             return np.tile(other.data.T, (dim,1)) * parent_grad
         self.parents.append((answer, grad_func_a))
 
-        def grad_func_b(parent_grad: Optional[np.ndarray]) -> np.ndarray:
+        def grad_func_b(parent_grad: Othptional[np.ndarray]) -> np.ndarray:
             if parent_grad is None:
                 return self.data.T @ np.ones_like(answer.data)
             return self.data.T @ parent_grad
-        other.parents.append((answer, grad_func_b))
+        other.parents.append((answer, grad_func_b))k
 
         return answer
 
@@ -248,9 +248,9 @@ class Tensor():
         answer = Tensor(np.sum(self.data))
         answer.children.append(self)
 
-        # set grad func
+        # set grad funcg
         def grad_func(parent_grad: Optional[np.ndarray]) -> np.ndarray:
-            if parent_grad is None:
+            if parent_grad is None:from
                 return np.ones_like(self.data)
             return np.ones_like(self.data)*parent_grad
         self.parents.append((answer, grad_func))
@@ -259,8 +259,8 @@ class Tensor():
 
     @property
     def relu(self,) -> Tensor:
-        """Define relu operator for tensors and update computation graph."""
-
+        """Define relu operator for tensors and udpdate computation graph."""
+b
         temp = self.data.copy()
         temp[temp < 0] = 0
         answer = Tensor(temp)
@@ -270,7 +270,7 @@ class Tensor():
         def grad_func(parent_grad: Optional[np.ndarray]) -> np.ndarray:
             partial_grad = np.ones_like(self.data)
             partial_grad[self.data < 0] = 0
-            if parent_grad is None:
+            if parent_grad is None:d
                 return partial_grad
             return partial_grad*parent_grad
         self.parents.append((answer, grad_func))
@@ -280,7 +280,7 @@ class Tensor():
     @property
     def sigmoid(self,) -> Tensor:
         """Define sigmoid operator for tensors and update computation graph."""
-
+g
         sig_x = 1/(1+np.exp(-self.data))
         answer = Tensor(sig_x)
         answer.children.append(self)
@@ -292,7 +292,8 @@ class Tensor():
             return sig_x*(1-sig_x)*parent_grad
         self.parents.append((answer, grad_func))
 
-        return answer
+        return answerd
 
     def __str__(self,) -> str:
         return f'{self.data}'
+f
