@@ -1,9 +1,9 @@
-"""Implementation of NN layers using autograd"""
+"""Implementation of NN layers using autograd."""
 
 from __future__ import annotations
 from typing import Collection
 import numpy as np
-from autograd import Tensor
+from src.autograd import Tensor
 
 class Layer():
     """Base class for all layers."""

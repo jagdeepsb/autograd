@@ -1,22 +1,22 @@
-"""Implementation of simple NN using autograd"""
+"""Implementation of simple NN using autograd."""
 
 from __future__ import annotations
 from typing import Collection
-from autograd import Tensor
-from layers import Linear, Sigmoid, ReLU
+from src.autograd import Tensor
+from src.layers import Linear, Sigmoid
 
 class MLP():
     """Implementation of a simple NN model."""
     def __init__(self, in_dims: int, out_dims: int) -> None:
         self.layers = [
             Linear(in_dims, 64),
-            ReLU(),
+            Sigmoid(),
             Linear(64, 64),
-            ReLU(),
+            Sigmoid(),
             Linear(64, 64),
-            ReLU(),
+            Sigmoid(),
             Linear(64, 64),
-            ReLU(),
+            Sigmoid(),
             Linear(64, out_dims),
             Sigmoid()
         ]

@@ -1,8 +1,8 @@
-"""Implementation of NN losses and optimizers using autograd"""
+"""Implementation of NN losses and optimizers using autograd."""
 
 from __future__ import annotations
 from typing import Collection
-from autograd import Tensor
+from src.autograd import Tensor
 
 class Loss():
     """Base class for loss function."""
@@ -39,7 +39,7 @@ class SGD(Optimizer):
         self, model_params: Collection[Tensor],
         lr: float = 1e-3) -> None:
 
-        Optimizer.__init__(model_params, lr)
+        Optimizer.__init__(self, model_params, lr)
 
     def step(self, ) -> None:
         for param in self.params:
