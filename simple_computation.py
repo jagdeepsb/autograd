@@ -1,7 +1,7 @@
 """Simple example for autograd library."""
 
 import numpy as np
-from src.autograd import Tensor
+from src import Tensor
 
 a = Tensor(np.array([
     [-1, -2, 3],
