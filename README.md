@@ -74,7 +74,7 @@ Let `W` be a `Tensor` with shape `(m x n)` and `x` be a `Tensor` with shape `(n 
 
 ## Contributing
 
-Feel free to contribute by making a pull request to the repo! You will need to install the following pip packages: `mypy`, `pytest`, `pytest-pylint`, `docformatter`, `yapf` and make sure you contributions pass the following styling guidelines:
+Feel free to contribute by making a pull request to the repo! You will need to install the following pip packages: `mypy`, `pytest`, `pytest-pylint`, `docformatter`, `yapf` and make sure your contributions pass the following styling guidelines:
 
 ```shell
 mypy . --config-file mypy.ini
